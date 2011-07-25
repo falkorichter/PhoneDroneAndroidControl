@@ -1,0 +1,5 @@
+This is a stripped down version of the DemoKit application to show the very basics. A HelloWorld for Android accessories.
+
+You can find the Android application source at https://github.com/deadfalkon/HelloADK and a short video explaining the setup on youtube at http://www.youtube.com/watch?v=hUE9hDf9bKc
+
+To setup the libraries I followed the instructions from the Android developer homepage at: http://developer.android.com/guide/topics/usb/adk.html
