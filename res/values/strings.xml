@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, HelloADKActivity!</string>
-    <string name="app_name">HelloADK</string>
+    <string name="app_name">Phone Drone</string>
+    <string name="label_servo2">Servo2</string>
+    <string name="label_servo1">Servo1</string>
 </resources>
