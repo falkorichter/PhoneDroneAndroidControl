@@ -9,11 +9,26 @@
         android:layout_height="wrap_content"
         android:text="@string/label_servo1" />
 
-    <SeekBar
-        android:id="@+id/servo1_seek_bar"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-    </SeekBar>
+
+        <SeekBar
+            android:id="@+id/servo1_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </SeekBar>
+
+        <EditText
+            android:id="@+id/servo1_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" >
+        </EditText>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,11 +57,24 @@
         android:layout_height="wrap_content"
         android:text="@string/label_servo2" />
 
-    <SeekBar
-        android:id="@+id/servo2_seek_bar"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-    </SeekBar>
+
+        <SeekBar
+            android:id="@+id/servo2_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </SeekBar>
+        <EditText
+            android:id="@+id/servo2_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" ></EditText>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
