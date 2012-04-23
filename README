@@ -1,3 +1,9 @@
-This is a stripped down version of the DemoKit application to show the very basics. A HelloWorld for Android accessories.
+This is my Android Control for the PhoneDrone board by 3DRobotics
 
-You can find the firmware sketch for the arduino at https://github.com/deadfalkon/HelloADKArduino and a short video explaining the setup on youtube at http://www.youtube.com/watch?v=hUE9hDf9bK 
+What does it do?
+# http://www.youtube.com/watch?v=bdMxwihs2cA
+# http://www.youtube.com/watch?v=qdZokmVdroc
+
+The corresponding Arduino source code can be found at https://github.com/deadfalkon/PhoneDroneSamples/tree/phoneDrone
+
+Please refer to this posting as well for further information: https://groups.google.com/forum/?hl=de&fromgroups#!topic/phone-drone-adk/8QFSInJTtzc
