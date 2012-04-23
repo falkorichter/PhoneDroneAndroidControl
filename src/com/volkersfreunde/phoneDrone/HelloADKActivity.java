@@ -23,6 +23,7 @@ import android.os.PowerManager.WakeLock;
 import android.util.Log;
 import android.view.Display;
 import android.view.Surface;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -62,6 +63,8 @@ public class HelloADKActivity extends Activity implements Runnable,
 	private Display mDisplay;
 	private WakeLock mWakeLock;
 
+	private CheckBox updateValuesCheckbox;
+
 	Handler handler = new Handler();
 
 	private CheckBox mAutoPilotCheckBox;
@@ -78,6 +81,7 @@ public class HelloADKActivity extends Activity implements Runnable,
 
 	public static final byte SERVO1_COMMAND = 2;
 	public static final byte SERVO2_COMMAND = 3;
+	public static final byte SEND_UPDATES_COMMAND = 4;
 
 	private final BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
 		@Override
@@ -189,9 +193,15 @@ public class HelloADKActivity extends Activity implements Runnable,
 		servo2SeekBar.setProgress(1000);
 		servo2SeekBar.setOnSeekBarChangeListener(this);
 		servo2SeekBar.setEnabled(false);
+
 		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		mAccelerometer = mSensorManager
 				.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+		updateValuesCheckbox = (CheckBox) findViewById(R.id.updateValues_Checkbox);
+		updateValuesCheckbox.setChecked(false);
+		updateValuesCheckbox.setOnCheckedChangeListener(this);
+
 	}
 
 	@Override
@@ -206,7 +216,7 @@ public class HelloADKActivity extends Activity implements Runnable,
 	private void startSensorListener() {
 		mAutoPilotTurnedOn = true;
 		mSensorManager.registerListener(this, mAccelerometer,
-				SensorManager.SENSOR_DELAY_NORMAL);
+				SensorManager.SENSOR_DELAY_UI);
 	}
 
 	private void stopSensorListener() {
@@ -269,6 +279,7 @@ public class HelloADKActivity extends Activity implements Runnable,
 			thread.start();
 			Log.d(TAG, "accessory opened");
 			enableControls(true);
+			sendUpdatesCommand(updateValuesCheckbox.isChecked());
 		} else {
 			Log.d(TAG, "accessory open fail");
 		}
@@ -277,6 +288,7 @@ public class HelloADKActivity extends Activity implements Runnable,
 	private void enableControls(boolean enable) {
 		servo1SeekBar.setEnabled(enable);
 		servo2SeekBar.setEnabled(enable);
+		updateValuesCheckbox.setEnabled(enable);
 	}
 
 	private void closeAccessory() {
@@ -369,6 +381,7 @@ public class HelloADKActivity extends Activity implements Runnable,
 		// we do nothing
 	}
 
+	@Override
 	public void onSensorChanged(SensorEvent event) {
 		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 			switch (mDisplay.getRotation()) {
@@ -409,12 +422,31 @@ public class HelloADKActivity extends Activity implements Runnable,
 	}
 
 	@Override
-	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-		if (isChecked) {
-			startSensorListener();
-		} else {
-			stopSensorListener();
+	public void onCheckedChanged(CompoundButton arg0, boolean checked) {
+		if (arg0 == updateValuesCheckbox) {
+			sendUpdatesCommand(checked);
+			Log.d(TAG, "onCheckedChanged");
+			incoming1SeekBar.setVisibility(checked ? View.VISIBLE
+					: View.INVISIBLE);
+			incoming2SeekBar.setVisibility(checked ? View.VISIBLE
+					: View.INVISIBLE);
+			incoming1EditText.setVisibility(checked ? View.VISIBLE
+					: View.INVISIBLE);
+			incoming2EditText.setVisibility(checked ? View.VISIBLE
+					: View.INVISIBLE);
+		} else if (arg0 == mAutoPilotCheckBox) {
+			if (checked) {
+				startSensorListener();
+			} else {
+				stopSensorListener();
+			}
 		}
+
+	}
+
+	private void sendUpdatesCommand(boolean checked) {
+		sendCommand(SEND_UPDATES_COMMAND, checked ? (byte) 1 : 0,
+				checked ? (byte) 1 : 0);
 
 	}
 }

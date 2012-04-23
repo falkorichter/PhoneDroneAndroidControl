@@ -7,9 +7,14 @@
     <CheckBox
         android:id="@+id/autopilot_check_box"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
-        android:text="AutoPilot"
-        />
+        android:layout_height="wrap_content"
+        android:text="AutoPilot" />
+
+    <CheckBox
+        android:id="@+id/updateValues_Checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Values" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -33,6 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:inputType="number" >
         </EditText>
     </LinearLayout>
@@ -53,6 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:inputType="number" >
 
             <requestFocus />
@@ -81,6 +90,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:inputType="number" >
         </EditText>
     </LinearLayout>
@@ -101,6 +112,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:inputType="number" >
 
             <requestFocus />
