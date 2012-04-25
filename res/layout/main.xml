@@ -4,6 +4,13 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    <CheckBox
+        android:id="@+id/autopilot_check_box"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:text="AutoPilot"
+        />
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -67,13 +74,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" >
         </SeekBar>
+
         <EditText
             android:id="@+id/servo2_editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" ></EditText>
+            android:inputType="number" >
+        </EditText>
     </LinearLayout>
 
     <LinearLayout
